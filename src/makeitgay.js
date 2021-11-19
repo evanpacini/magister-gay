@@ -1,5 +1,14 @@
-// When message is received from background
-chrome.runtime.onMessage.addListener((data) => makeItGay(data));
+var datacpy = {}; // local copy of data
+
+// once page is loaded, triggers
+window.addEventListener("load", () => {
+  chrome.runtime.onMessage.addListener((data) => makeItGay(data));
+  document.querySelector(":root").addEventListener("click", () => {
+    makeItGay(datacpy);
+    setTimeout(() => makeItGay(datacpy), 100);
+  });
+});
+
 // Changes the css properties of any elements dynamically
 function changeProperty(selector, property, colour) {
   var elements = document.querySelectorAll(selector); // get all elements
@@ -8,16 +17,36 @@ function changeProperty(selector, property, colour) {
   }
 }
 
+// Changes the css properties of any elements dynamically
+function changeAttribute(selector, attribute, colour, i) {
+  var elements = document.querySelectorAll(selector); // get all elements
+  elements[i].setAttribute(attribute, colour); // make one gay
+}
+
 // Make it gay
 function makeItGay(data) {
+  datacpy = data; // Save local copy of data
+
   // General
   changeProperty("body", "background", data.bg); // background
-  changeProperty(".head-bar", "color", data.h1); // header 1
-  changeProperty(".block h3", "color", data.h2); // header 2
+  changeProperty(".head-bar, h1", "color", data.h1); // header 1
+  changeProperty(".block h3, h2", "color", data.h2); // header 2
   changeProperty("i", "color", data.icon); // icon colour
   changeProperty(".head-bar div>a>i", "background", data.h_butt_bg); // header button background
-  changeProperty("li.active", "border-bottom", "2px solid " + data.tab); // active tab colour
+  changeProperty(
+    "aside .tabs li.active",
+    "border-bottom",
+    "2px solid " + data.tab
+  ); // active tab colour
   changeProperty(".endlink a", "color", data.link); // links at the end of the section
+
+  // Login screen
+  if (window.location.pathname.includes("/login")) {
+    changeAttribute("svg path", "fill", data.login_logo, 1); // Magister text
+    changeAttribute("svg path", "fill", data.login_dot, 0); // Magister dot
+    changeProperty(".dna-btn-primary", "color", data.login_butt); // login button text
+    changeProperty(".dna-btn-primary", "background", data.login_butt_bg); // login button background
+  }
 
   // Home
   changeProperty(".alert", "border-left", "4px solid" + data.home_changed); // lesson changed alert

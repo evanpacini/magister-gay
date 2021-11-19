@@ -33,11 +33,6 @@ function makeItGay(data) {
   changeProperty(".block h3, h2", "color", data.h2); // header 2
   changeProperty("i", "color", data.icon); // icon colour
   changeProperty(".head-bar div>a>i", "background", data.h_butt_bg); // header button background
-  changeProperty(
-    "aside .tabs li.active",
-    "border-bottom",
-    "2px solid " + data.tab
-  ); // active tab colour
   changeProperty(".endlink a", "color", data.link); // links at the end of the section
 
   // Login screen

@@ -39,6 +39,13 @@ function makeItGay(data) {
   if (window.location.pathname.includes("/login")) {
     changeAttribute("svg path", "fill", data.login_logo, 1); // Magister text
     changeAttribute("svg path", "fill", data.login_dot, 0); // Magister dot
+    changeAttribute("svg path", "fill", data.login_icons, 2); // School icon
+    changeAttribute("svg path", "fill", data.login_icons, 3); // User icon
+    try {
+      changeAttribute("svg path", "fill", data.login_icons, 4); // Password icon
+      changeAttribute("svg path", "fill", data.login_icons, 5); // Show password icon
+      changeAttribute("svg path", "fill", data.login_icons, 6); // Forgot password icon
+    } catch {}
     changeProperty(".dna-btn-primary", "color", data.login_butt); // login button text
     changeProperty(".dna-btn-primary", "background", data.login_butt_bg); // login button background
   }

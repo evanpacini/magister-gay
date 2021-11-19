@@ -1,0 +1,24 @@
+{
+  "name": "Magister Gay Edition™",
+  "description": "Turns your boring blue Magister into a vivid gay Magister.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["tabs", "storage"],
+  "background": {
+    "service_worker": "gaylistener.js"
+  },
+  "options_page": "gay.html",
+  "content_scripts": [
+    {
+      "matches": ["https://*.magister.net/*"],
+      "js": ["makeitgay.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "/images/iconx16.png",
+    "32": "/images/iconx32.png",
+    "48": "/images/iconx48.png",
+    "128": "/images/iconx128.png"
+  }
+}

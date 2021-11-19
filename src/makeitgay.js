@@ -10,45 +10,28 @@ function changeProperty(selector, property, colour) {
 
 // Make it gay
 function makeItGay(data) {
+  // General
+  changeProperty("body", "background", data.bg); // background
+  changeProperty(".head-bar", "color", data.h1); // header 1
+  changeProperty(".block h3", "color", data.h2); // header 2
+  changeProperty("i", "color", data.icon); // icon colour
+  changeProperty(".head-bar div>a>i", "background", data.h_butt_bg); // header button background
+  changeProperty("li.active", "border-bottom", "2px solid " + data.tab); // active tab colour
+  changeProperty(".endlink a", "color", data.link); // links at the end of the section
+
+  // Home
+  changeProperty(".alert", "border-left", "4px solid" + data.home_changed); // lesson changed alert
+  changeProperty(".alert span.nrblock", "background", data.home_changed_nr); // lesson changed alert nrblock
+  changeProperty(".alertRed", "border-left", "4px solid " + data.home_x); // lesson cancelled alert
+  changeProperty(".alertRed span.nrblock", "background", data.home_x_nr); // lesson cancelled alert nrblock
+  changeProperty("#cijfers-leerling .last-grade", "background", data.home_g); // last grade
+
   // Sidebar
-  changeProperty(".container", "background", data.bg); // background
   changeProperty(":root", "--primary-background", data.sbar); // sidebar primary (collapse, right)
+  changeProperty(":root", "--background-1", data.sbar_butt_bg); // sidebar button backgeound
   changeProperty(":root", "--secondary-background", data.sbar2); // sidebar left
   changeProperty(".menu-footer", "background", data.sbar_col); // sidebar collapse button
 
-  changeProperty(".head-bar", "color", data.h1); // header 1
-  changeProperty(".block h3", "color", data.h2); // header 2
-
-  changeProperty(":root", "--background-1", data.butt); // buttons
-  changeProperty(".head-bar div>a>i", "color", data.butt); // layout button
-  changeProperty(".head-bar div>a>i", "background", "#fff"); // layout button background
-
-  changeProperty(".agenda-text-icon", "background", "#0f0"); // "SO" icon in the agenda
-  changeProperty(
-    "aside .tabs li.active",
-    "border-bottom",
-    "2px solid " + "#00f"
-  ); // Active tab colour
-
-  changeProperty(".alert", "border-left", "4px solid" + c2); // lesson changed alert
-  var al = document.querySelectorAll(".alert"); // get all elements
-  var alnr = document.querySelectorAll(".alert span.nrblock"); // get all elements
-  for (var i = 0; i < al.length; i++) {
-    al[i].style.setProperty(); // make it gay
-    alnr[i].style.setProperty("background-color", c2); // make it gay
-  }
-  var alRed = document.querySelectorAll(".alertRed"); // get all elements
-  var alRednr = document.querySelectorAll(".alertRed span.nrblock"); // get all elements
-  for (var i = 0; i < alRed.length; i++) {
-    alRed[i].style.setProperty("border-left", "4px solid " + c4); // make it gay
-    alRednr[i].style.setProperty("background-color", c4); // make it gay
-  }
-  document
-    .querySelector("#cijfers-leerling .last-grade")
-    .style.setProperty("background-color", c2); // make it gay
-  var links = document.querySelectorAll(".endlink a"); // get all elements
-  for (var i = 0; i < links.length; i++) {
-    links[i].style.setProperty("color", c2); // make it gay
-  }
-  // END HOME
+  // Agenda
+  changeProperty(".agenda-text-icon", "background", data.agenda_notif); // "SO", "HW" icons in the agenda
 }

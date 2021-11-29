@@ -51,7 +51,7 @@ function makeItGay(data) {
   }
 
   // Home
-  changeProperty(".alert", "border-left", "4px solid" + data.home_changed); // lesson changed alert
+  changeProperty(".alert", "border-left", "4px solid " + data.home_changed); // lesson changed alert
   changeProperty(".alert span.nrblock", "background", data.home_changed_nr); // lesson changed alert nrblock
   changeProperty(".alertRed", "border-left", "4px solid " + data.home_x); // lesson cancelled alert
   changeProperty(".alertRed span.nrblock", "background", data.home_x_nr); // lesson cancelled alert nrblock
